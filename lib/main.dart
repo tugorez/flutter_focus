@@ -45,21 +45,24 @@ class _HomeState extends State<Home> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
+            for (int i = 0; i < 6; i++)
+              if (i % 2 == 0)
+                TextField(
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Type Something',
+                  ),
+                )
+              else
+                TextButton(
+                  onPressed: _incrementCounter,
+                  child: Text('Press me'),
+                ),
+            Text('You have pushed the button this many times: $_counter'),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), 
     );
   }
 }
