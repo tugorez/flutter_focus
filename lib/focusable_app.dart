@@ -21,6 +21,7 @@ class _FocusableAppState extends State<FocusableApp> {
     final WidgetsBinding binding = WidgetsFlutterBinding.ensureInitialized();
     final PlatformDispatcher platformDispatcher = binding.platformDispatcher;
     platformDispatcher.onViewFocusChange = (ev) {
+      print(ev);
       if (ev.state == ViewFocusState.focused) {
         _focusNode.requestFocus();
       } else {
