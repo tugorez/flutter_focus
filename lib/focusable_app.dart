@@ -20,6 +20,10 @@ class _FocusableAppState extends State<FocusableApp> {
 
     final WidgetsBinding binding = WidgetsFlutterBinding.ensureInitialized();
     final PlatformDispatcher platformDispatcher = binding.platformDispatcher;
+    // This has to be done otherwise Flutter assumes it has focus.
+    binding.scheduleFirstFrameCheck(
+      onFirstFramePainted: () => _focusNode.unfocus(),
+    );
     platformDispatcher.onViewFocusChange = (ev) {
       print(ev);
       if (ev.state == ViewFocusState.focused) {
@@ -43,5 +47,17 @@ class _FocusableAppState extends State<FocusableApp> {
   @override
   void dispose() {
     _focusNode.dispose();
+  }
+}
+
+extension on WidgetsBinding {
+  void scheduleFirstFrameCheck({required void Function() onFirstFramePainted}) {
+    addPostFrameCallback((_) {
+      if (sendFramesToEngine) {
+        onFirstFramePainted();
+      } else {
+        scheduleFirstFrameCheck(onFirstFramePainted: onFirstFramePainted);
+      }
+    });
   }
 }
