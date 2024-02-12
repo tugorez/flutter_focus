@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:ui' show ViewFocusState, ViewFocusDirection;
 import 'focusable_app.dart';
 
 void main() {
@@ -57,9 +58,22 @@ class _HomeState extends State<Home> {
               else
                 TextButton(
                   onPressed: _incrementCounter,
-                  child: Text('Press me'),
+                  child: Text('Press me to increase count'),
                 ),
             Text('You have pushed the button this many times: $_counter'),
+            SizedBox(height: 100),
+            ElevatedButton(
+              onPressed: () {
+                final viewId = View.of(context).viewId;
+                final platformDispatcher = WidgetsFlutterBinding.ensureInitialized().platformDispatcher;
+                platformDispatcher.requestViewFocusChange(
+                  viewId: viewId,
+                  state: ViewFocusState.unfocused,
+                  direction: ViewFocusDirection.undefined,
+                );
+              },
+              child: Text('Press me to unfocus this view'),
+            ),
           ],
         ),
       ),
