@@ -47,18 +47,10 @@ class _HomeState extends State<Home> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             for (int i = 0; i < 6; i++)
-              if (i % 2 == 0)
-                TextField(
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Type Something',
-                  ),
-                )
-              else
-                TextButton(
-                  onPressed: _incrementCounter,
-                  child: Text('Press me to increase count'),
-                ),
+              TextButton(
+                onPressed: _incrementCounter,
+                child: Text('Press me to increase count'),
+              ),
             Text('You have pushed the button this many times: $_counter'),
             SizedBox(height: 100),
             ElevatedButton(
