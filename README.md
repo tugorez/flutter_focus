@@ -1,16 +1,6 @@
 # flutter_focus
 
-A new Flutter project.
+1. Clone and rebase https://github.com/gspencergoog/flutter/tree/view_focus.
+1. Clone and rebase https://github.com/tugorez/engine/tree/focus-management-input.
+1. Run the app with your local version of the framework and engine `flutter run --local-web-sdk=wasm_release -d web-server --web-port=8080`
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
