@@ -41,10 +41,19 @@ class _HomeState extends State<Home> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             for (int i = 0; i < 6; i++)
-              TextButton(
-                onPressed: _incrementCounter,
-                child: Text('Press me to increase count'),
-              ),
+              if (i % 2 != 0)
+                TextField(
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Type Something',
+                  ),
+                )
+              else
+                TextButton(
+                  onPressed: _incrementCounter,
+                  child: Text('Press me to increase count'),
+                ),
             Text('You have pushed the button this many times: $_counter'),
             SizedBox(height: 100),
           ],

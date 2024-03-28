@@ -18,20 +18,10 @@ class _FocusableAppState extends State<FocusableApp> {
   void initState() {
     super.initState();
 
-    final WidgetsBinding binding = WidgetsFlutterBinding.ensureInitialized();
-    final PlatformDispatcher platformDispatcher = binding.platformDispatcher;
     // This has to be done otherwise Flutter assumes it has focus.
-    binding.scheduleFirstFrameCheck(
+    WidgetsFlutterBinding.ensureInitialized().scheduleFirstFrameCheck(
       onFirstFramePainted: () => _focusNode.unfocus(),
     );
-    platformDispatcher.onViewFocusChange = (ev) {
-      print(ev);
-      if (ev.state == ViewFocusState.focused) {
-        _focusNode.requestFocus();
-      } else {
-        _focusNode.unfocus();
-      }
-    };
   }
 
   @override

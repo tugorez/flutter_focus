@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'app.dart';
+import 'focusable_app.dart';
 
 void main() {
-  runApp(App());
+  runApp(const FocusableApp(child: App()));
 }
