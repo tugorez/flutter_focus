@@ -43,7 +43,6 @@ class _HomeState extends State<Home> {
             for (int i = 0; i < 6; i++)
               if (i % 2 != 0)
                 TextField(
-                  obscureText: true,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Type Something',
