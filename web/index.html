@@ -88,6 +88,8 @@
     </div>
     </div>
   <script>
+    document.body.addEventListener('focusin', (ev) => console.log('@focus in, was gained by:', ev.target));
+    document.body.addEventListener('focusout', (ev) => console.log('@focus out, will go to:', ev.relatedTarget));
     window.addEventListener('load', function(ev) {
       // Download main.dart.js
       _flutter.loader.loadEntrypoint({
