@@ -100,15 +100,17 @@
       }
 
       const urlParams = new URLSearchParams(window.location.search);
-      const embedded = urlParams.get("embedded");
+      const embedded = urlParams.has("embedded");
+      const options = {};
+      if (embedded) {
+        options.hostElement = document.querySelector("#flutter");
+      }
       window.addEventListener("load", function (ev) {
         // Download main.dart.js
         _flutter.loader.loadEntrypoint({
           onEntrypointLoaded: function (engineInitializer) {
             engineInitializer
-              .initializeEngine({
-                hostElement: embedded && document.querySelector("#flutter"),
-              })
+              .initializeEngine(options)
               .then(function (appRunner) {
                 appRunner.runApp();
               });

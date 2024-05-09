@@ -5,8 +5,8 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: const Home(title: 'Flutter Demo Home Page'),
+    return const MaterialApp(
+      home: Home(title: 'Flutter Demo Home Page'),
     );
   }
 }
@@ -36,26 +36,29 @@ class _HomeState extends State<Home> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            for (int i = 0; i < 6; i++)
-              if (i % 2 != 0)
-                TextField(
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Type Something',
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              for (int i = 0; i < 6; i++)
+                if (i % 2 != 0)
+                  const TextField(
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Type Something',
+                    ),
+                  )
+                else
+                  TextButton(
+                    onPressed: _incrementCounter,
+                    child: const Text('Press me to increase count'),
                   ),
-                )
-              else
-                TextButton(
-                  onPressed: _incrementCounter,
-                  child: Text('Press me to increase count'),
-                ),
-            Text('You have pushed the button this many times: $_counter'),
-            SizedBox(height: 100),
-          ],
+              Text('You have pushed the button this many times: $_counter'),
+              const SizedBox(height: 100),
+            ],
+          ),
         ),
       ),
     );
