@@ -98,13 +98,16 @@
           console.log("@active element: ", document.activeElement);
         }, 1000);
       }
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const embedded = urlParams.get("embedded");
       window.addEventListener("load", function (ev) {
         // Download main.dart.js
         _flutter.loader.loadEntrypoint({
           onEntrypointLoaded: function (engineInitializer) {
             engineInitializer
               .initializeEngine({
-                hostElement: document.querySelector("#flutter"),
+                hostElement: embedded && document.querySelector("#flutter"),
               })
               .then(function (appRunner) {
                 appRunner.runApp();
