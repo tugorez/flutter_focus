@@ -104,6 +104,8 @@
       const options = {};
       if (embedded) {
         options.hostElement = document.querySelector("#flutter");
+      } else {
+        document.body.innerHTML = "";
       }
       window.addEventListener("load", function (ev) {
         // Download main.dart.js
